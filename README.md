@@ -13,7 +13,7 @@ Mendix for Raspberry Pi - Balena Buildpack
 
 The Mendix Balena Buildpack is an attempt to run a Mendix application on a Raspberry Pi 3. We do this by forking the official Mendix build pack so that it will run on ARM and combining this with a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
 
-This modified buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. A separate module for this will be published later on.
+This modified buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. The separate module can be found [here](https://github.com/JelteMX/RaspberryPiModule)
 
 It is based on the following sources:
 
@@ -79,6 +79,6 @@ This project is a proof of concept. The following things are on the todo list:
 
 - Use the MDA file instead of the unzipped contents
 - Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX
-- Finish up the RPI Module for Mendix (this will be a separate repository)
+- Finish up the RPI Module for Mendix (this will be a separate repository) - edit: First version can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
 - `docker-compose.yml` includes a reference to a container for Google Cloud IOT, which is a way to send data to Google Cloud IOT. This component needs further development before it can be reliably used.
 - We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
