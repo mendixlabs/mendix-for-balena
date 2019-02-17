@@ -11,14 +11,14 @@ Mendix for Raspberry Pi - Balena Buildpack
 
 ## Description
 
-The Mendix Balena Buildpack is an attempt to run a Mendix application on a Raspberry Pi 3. We do this by using a modified Dockerfile setup from the original buildpack and run NGinx & Postgress in a separate container on the Raspberry Pi.
+The Mendix Balena Buildpack is an attempt to run a Mendix application on a Raspberry Pi 3. We do this by forking the official Mendix build pack so that it will run on ARM and combining this wuth a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
 
-This buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. A separate module for this will be published later on.
+This modified buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. A separate module for this will be published later on.
 
 It is based on the following sources:
 
-- [Mendix Buildpack for Docker](https://github.com/mendix/docker-mendix-buildpack) - this one is heavily modified and in the current setup. Copy pasted and changed in order for it to work on the RPi.
-- [Mendix Buildpack for Cloud Foundry](https://github.com/MXClyde/cf-mendix-buildpack/tree/pi) - this is modified and will be downloaded in the Dockerfile. Note that this is a separate fork and modified for the Pi.
+- [Mendix Buildpack for Docker](https://github.com/MXClyde/docker-mendix-buildpack/tree/pi) - this is the forked Mendix Docker buildpack made to run on ARM
+- [Mendix Buildpack for Cloud Foundry](https://github.com/MXClyde/cf-mendix-buildpack/tree/pi) - this is modified and will be downloaded as part of the Docker buildpack flow.
 - [Balena Raspberry Pi3 Ubuntu base image with OpenJDK](https://hub.docker.com/r/balenalib/raspberrypi3-ubuntu-openjdk/)
 
 ## Instructions
@@ -51,7 +51,7 @@ This folder should have the following structure (leave all other folder and file
 
 `This section is not finished yet`
 
-It is possible, using the Balena Cli, to build the docker images locally. This will fix problems with the build server ARM1, which sometimes fails. (because you are building it locally).
+It is possible, using the Balena Cli, to build the Docker images locally. This will fix problems with the build server ARM1, which sometimes fails. (because you are building it locally).
 
 ### Build
 
@@ -78,7 +78,7 @@ This isn't finished yet, but the authors were able to create a CI/CD pipeline in
 This project is a proof of concept. The following things are on the todo list:
 
 - Use the MDA file instead of the unzipped contents
-- Check if we need the web folder in the mendix buildpack, or only in Nginx
+- Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX
 - Finish up the RPI Module for Mendix (this will be a separate repository)
 - `docker-compose.yml` includes a reference to a container for GCloud IOT, which is a way to send data to Google. This needs to be tweaked and finished first. We did include this in the repository, but shouldn't be used yet.
 - We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
