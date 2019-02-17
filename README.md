@@ -5,7 +5,7 @@ Mendix for Raspberry Pi - Balena Buildpack
 
 ## Disclaimer
 
-**Note: This is work in progress and should not be used for any production setup. This README is not finished yet. See TODO for all steps that are still in development. We do not take responsibility if your Raspberry Pi decides to take over the world.**
+**Note: This is work in progress and should not be used for any production setup. This README is not finished yet. See TODO (bottom of this README) for all steps that are still in development. We do not take responsibility if your Raspberry Pi decides to take over the world.**
 
 > This is not supported by [Mendix](https://www.mendix.com/), purely a proof-of-concept created by two Mendix developers.
 
