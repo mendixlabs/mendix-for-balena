@@ -1,0 +1,42 @@
+version: '2'
+volumes:
+  db-data:
+services:
+  mendix:
+    build: docker-mendix-buildpack
+    ports:
+      - "81:81"
+    privileged: true
+    environment:
+      - ADMIN_PASSWORD=SetThisToAVeryLongPassword
+      - DATABASE_ENDPOINT= postgres://mendix:mendix@db:5432/mendix
+      # - DATABASE_ENDPOINT=<JDBC URL>
+      # - LICENSE_ID=<Mx License ID>
+      # - LICENSE_KEY=<Mx License Key>
+      - DEBUGGER_PASSWORD=DebuggerPassword
+    links:
+      - db
+    depends_on:
+      - db
+    restart: always
+  nginx:
+    build: nginx
+    privileged: true
+    depends_on:
+      - mendix
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+  db:
+    build: postgres
+    restart: always
+    environment:
+      - PGDATA=/database
+      - POSTGRES_DB=mendix
+      - POSTGRES_USER=mendix
+      - POSTGRES_PASSWORD=mendix
+    volumes:
+      - 'db-data:/database'
+#  gcloud-iot:
+#    build: gcloud-iot
