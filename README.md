@@ -11,7 +11,7 @@ Mendix for Raspberry Pi - Balena Buildpack
 
 ## Description
 
-The Mendix Balena Buildpack is an attempt to run a Mendix application on a Raspberry Pi 3. We do this by forking the official Mendix build pack so that it will run on ARM and combining this wuth a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
+The Mendix Balena Buildpack is an attempt to run a Mendix application on a Raspberry Pi 3. We do this by forking the official Mendix build pack so that it will run on ARM and combining this with a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
 
 This modified buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. A separate module for this will be published later on.
 
