@@ -5,7 +5,7 @@ services:
   mendix:
     build: docker-mendix-buildpack
     ports:
-      - "81:81"
+      - "8081:81"
     privileged: true
     environment:
       - ADMIN_PASSWORD=SetThisToAVeryLongPassword
