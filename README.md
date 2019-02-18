@@ -51,7 +51,7 @@ This folder should have the following structure (leave all other folder and file
 
 `This section is not finished yet`
 
-It is possible, using the Balena Cli, to build the Docker images locally. This will fix problems with the build server ARM1, which sometimes fails. (because you are building it locally).
+It is possible, using the Balena Cli, to build the Docker images locally. This will fix problems with the build server ARM1, which sometimes fails. Images are stored in your local Docker repo (on your computer). We're also checking if it will be possible to put this image on Docker Hub to make development easier.
 
 ### Build
 
@@ -79,6 +79,7 @@ This project is a proof of concept. The following things are on the todo list:
 
 - Use the MDA file instead of the unzipped contents
 - Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX
-- Finish up the RPI Module for Mendix (this will be a separate repository) - edit: First version can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
+- Finish up the RPI Module for Mendix which can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
 - `docker-compose.yml` includes a reference to a container for Google Cloud IOT, which is a way to send data to Google Cloud IOT. This component needs further development before it can be reliably used.
 - We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
+- See if we cann host the specific Mendix image on Docker Hub, so we don't have to include the current complex Dockerfile setup
