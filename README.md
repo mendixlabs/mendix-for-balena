@@ -30,7 +30,7 @@ It is based on the following sources:
 5. Take the .MDA file and unzip it in the project folder in `docker-mendix-buildpack/project`. Your project folder should contain two folders: `web` & `model`.
 6. Now copy the `web` folder to the nginx folder in this buildpack. This is needed to serve static files.
 
-This folder should have the following structure (leave all other folder and files **AS IS**):
+Your repository should have the following (partial) structure (**_leave all other folder and files AS IS_**):
 
 ```
 ├── docker-compose.yml
@@ -82,4 +82,4 @@ This project is a proof of concept. The following things are on the todo list:
 - Finish up the RPI Module for Mendix which can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
 - `docker-compose.yml` includes a reference to a container for Google Cloud IOT, which is a way to send data to Google Cloud IOT. This component needs further development before it can be reliably used.
 - We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
-- See if we cann host the specific Mendix image on Docker Hub, so we don't have to include the current complex Dockerfile setup
+- See if we can host the specific Mendix image on Docker Hub, so we don't have to include the current complex Dockerfile setup
