@@ -6,11 +6,10 @@ services:
     build: docker-mendix-buildpack
     privileged: true
     environment:
-      # - ADMIN_PASSWORD=SetThisToAVeryLongPassword
-      # - DATABASE_ENDPOINT= postgres://mendix:mendix@db:5432/mendix
-      # - DATABASE_ENDPOINT=<JDBC URL>
-      # - LICENSE_ID=<Mx License ID>
-      # - LICENSE_KEY=<Mx License Key>
+       - ADMIN_PASSWORD=SetThisToAVeryLongPassword
+       - DATABASE_ENDPOINT= postgres://mendix:mendix@db:5432/mendix
+     # - LICENSE_ID=<Mx License ID>
+     # - LICENSE_KEY=<Mx License Key>
        - DEBUGGER_PASSWORD=DebuggerPassword
     links:
       - db
