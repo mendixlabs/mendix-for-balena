@@ -12,7 +12,7 @@ LABEL maintainer="jelte.lagendijk@mendix.com"
 # When doing a full build: install dependencies & remove package lists
 RUN apt-get -q -y update && \
  DEBIAN_FRONTEND=noninteractive apt-get upgrade -q -y && \
- DEBIAN_FRONTEND=noninteractive apt-get install -q -y python3 wget curl libgdiplus libpq5 locales python3-distutils git && \
+ DEBIAN_FRONTEND=noninteractive apt-get install -q -y python3 wget curl libgdiplus libpq5 locales python3-distutils git i2c-tools && \
  rm -rf /var/lib/apt/lists/*
 
 # Set the locale
