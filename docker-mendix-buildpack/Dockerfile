@@ -55,9 +55,9 @@ RUN "/buildpack/compilation" /build /cache && \
 
 # Expose nginx port
 ENV PORT 80
-EXPOSE 81
-EXPOSE 82
-EXPOSE 83
+#EXPOSE 81
+#EXPOSE 82
+#EXPOSE 83
 
 RUN mkdir -p "/.java/.userPrefs/com/mendix/core"
 RUN mkdir -p "/root/.java/.userPrefs/com/mendix/core"

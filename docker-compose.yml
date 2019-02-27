@@ -4,16 +4,13 @@ volumes:
 services:
   mendix:
     build: docker-mendix-buildpack
-    # ports:
-    #  - "81:81"
     privileged: true
     environment:
-      - ADMIN_PASSWORD=SetThisToAVeryLongPassword
-      - DATABASE_ENDPOINT= postgres://mendix:mendix@db:5432/mendix
-      # - DATABASE_ENDPOINT=<JDBC URL>
-      # - LICENSE_ID=<Mx License ID>
-      # - LICENSE_KEY=<Mx License Key>
-      - DEBUGGER_PASSWORD=DebuggerPassword
+       - ADMIN_PASSWORD=SetThisToAVeryLongPassword
+       - DATABASE_ENDPOINT= postgres://mendix:mendix@db:5432/mendix
+     # - LICENSE_ID=<Mx License ID>
+     # - LICENSE_KEY=<Mx License Key>
+       - DEBUGGER_PASSWORD=DebuggerPassword
     links:
       - db
     depends_on:
