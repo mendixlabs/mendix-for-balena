@@ -1,1 +1,4 @@
 .DS_Store
+./*.sh
+build.sh
+deploy.sh
