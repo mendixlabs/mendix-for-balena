@@ -4,7 +4,7 @@
 # Copied from original Dockerfile
 # Author: Mendix Digital Ecosystems, digitalecosystems@mendix.com
 # Version: 1.5
-FROM balenalib/raspberrypi3-ubuntu-openjdk:8-latest-run
+FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu-openjdk:8-latest-run
 #This version does a full build originating from the Ubuntu Docker images
 LABEL Author="J.W. Lagendijk & C.B.L. Waal"
 LABEL maintainer="jelte.lagendijk@mendix.com"
