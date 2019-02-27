@@ -78,7 +78,7 @@ This isn't finished yet, but the authors were able to create a CI/CD pipeline in
 This project is a proof of concept. The following things are on the todo list:
 
 - Use the MDA file instead of the unzipped contents
-- Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX
+- ~Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX~ Web folder is needed
 - Finish up the RPI Module for Mendix which can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
 - `docker-compose.yml` includes a reference to a container for Google Cloud IOT, which is a way to send data to Google Cloud IOT. This component needs further development before it can be reliably used.
 - We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
