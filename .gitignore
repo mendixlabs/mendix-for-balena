@@ -2,3 +2,8 @@
 ./*.sh
 build.sh
 deploy.sh
+
+tmp/
+.env
+node_modules/
+package-lock.json

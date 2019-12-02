@@ -3,7 +3,7 @@ volumes:
   db-data:
 services:
   mendix:
-    build: docker-mendix-buildpack
+    build: docker/docker-mendix-buildpack
     privileged: true
     environment:
        - ADMIN_PASSWORD=SetThisToAVeryLongPassword
@@ -17,7 +17,7 @@ services:
       - db
     restart: always
   nginx:
-    build: nginx
+    build: docker/nginx
     privileged: true
     depends_on:
       - mendix
@@ -26,7 +26,7 @@ services:
       - "443:443"
     restart: always
   db:
-    build: postgres
+    build: docker/postgres
     restart: always
     environment:
       - PGDATA=/database
@@ -36,4 +36,4 @@ services:
     volumes:
       - 'db-data:/database'
 #  gcloud-iot:
-#    build: gcloud-iot
+#    build: docker/gcloud-iot

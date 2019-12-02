@@ -1,0 +1,22 @@
+{
+  "name": "balena-mendix-builder",
+  "version": "0.2.0",
+  "description": "Make deploying balena for Mendix a breeze",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./tools/build.js",
+    "deploy": "node ./tools/deploy.js",
+    "project": "node ./tools/project.js",
+    "release": "npm run project && npm run build && npm run deploy"
+  },
+  "author": "Jelte Lagendijk <jelte.lagendijk@mendix.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "balena-cli": "^11.18.3",
+    "dotenv": "^8.2.0",
+    "execa": "^3.4.0",
+    "fs-extra": "^8.1.0",
+    "lodash": "^4.17.15",
+    "shelljs": "^0.8.3"
+  }
+}

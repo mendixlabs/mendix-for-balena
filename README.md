@@ -1,7 +1,7 @@
 Mendix for Raspberry Pi - Balena Buildpack
 ===
 
-**Version: 0.1.0**
+**Version: 0.2.0**
 
 ## Disclaimer
 
@@ -11,9 +11,9 @@ Mendix for Raspberry Pi - Balena Buildpack
 
 ## Description
 
-The Mendix Balena Buildpack allows you to run a Mendix application on a Raspberry Pi 3. We do this by forking the official Mendix build pack so that it will run on ARM and combining this with a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
+The Mendix Balena Buildpack allows you to run a Mendix application on a Raspberry Pi 3/4. We do this by forking the official Mendix build pack so that it will run on ARM and combining this with a ready-to-go configuration of NGINX & PostgreSQL in separate containers on the Raspberry Pi.
 
-This modified buildpack also contains WiringPi ([version 2.46.1](http://wiringpi.com/wiringpi-updated-for-the-pi-v3plus/), included) & Pi4J ([version 1.2-SNAPSHOT](http://pi4j.com/download.html), included), so we can control GPIO ports from Java Actions in Mendix. The separate module can be found [here](https://github.com/JelteMX/RaspberryPiModule)
+> In a previous version we included WiringPi, but this has been deprecated, as it doesn't work on a 64-bit architecture like the Raspberry Pi 4.
 
 It is based on the following sources:
 
@@ -27,18 +27,18 @@ It is based on the following sources:
 2. Clone this repository from Github to your computer
 3. Add the balena remote to this respository: `git remote add balena <username>@git.balena-cloud.com:<username>/<repo>.git`. You can find this command in the top right of your Balena dashboard in an app.
 4. Create a deployment package for your application in Mendix Modeler.
-5. Take the .MDA file and unzip it in the project folder in `docker-mendix-buildpack/project`. Your project folder should contain two folders: `web` & `model`.
-6. Now copy the `web` folder to the nginx folder in this buildpack. This is needed to serve static files.
+5. Take the .MDA file and unzip it in the project folder in `docker/docker-mendix-buildpack/project`. Your project folder should contain two folders: `web` & `model`.
+6. Now copy the `web` folder to the nginx (`docker/nginx`) folder in this buildpack. This is needed to serve static files.
 
 Your repository should have the following (partial) structure (**_leave all other folder and files AS IS_**):
 
 ```
 ├── docker-compose.yml
-├── docker-mendix-buildpack
+├── docker/docker-mendix-buildpack
 │   └── project
 │       ├── web <web-folder from deployment>
 │       └── model <model-folder from deployment>
-└── nginx
+└── docker/nginx
     └── web <web-folder from deployment>
 ```
 
@@ -49,7 +49,7 @@ Your repository should have the following (partial) structure (**_leave all othe
 
 ## Local development
 
-`This section is not finished yet`
+> Local development has changed since the previous iteration, now automating things using Node tools.
 
 It is possible, using the Balena Cli, to build the Docker images locally. This will fix problems with the build server ARM1, which sometimes fails. Images are stored in your local Docker repo (on your computer). We're also checking if it will be possible to put this image on Docker Hub to make development easier.
 
@@ -77,9 +77,4 @@ This isn't finished yet, but the authors were able to create a CI/CD pipeline in
 
 This project is a proof of concept. The following things are on the todo list:
 
-- Use the MDA file instead of the unzipped contents
-- ~Check if we need the web folder (static content) in the mendix buildpack, or only in NGINX~ Web folder is needed
-- Finish up the RPI Module for Mendix which can be found here: [https://github.com/JelteMX/RaspberryPiModule](https://github.com/JelteMX/RaspberryPiModule)
 - `docker-compose.yml` includes a reference to a container for Google Cloud IOT, which is a way to send data to Google Cloud IOT. This component needs further development before it can be reliably used.
-- We will update the Dockerfile in the Mendix buildpack to become a `Dockerfile.template`, making it possible to run it on other devices as well.
-- See if we can host the specific Mendix image on Docker Hub, so we don't have to include the current complex Dockerfile setup
