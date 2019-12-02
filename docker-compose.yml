@@ -35,5 +35,11 @@ services:
       - POSTGRES_PASSWORD=mendix
     volumes:
       - 'db-data:/database'
+  mqtt:
+    # We don't expose the ports, so it's only accesible internally, server address: "mqtt:1883"
+    build: docker/mqtt
+    # ports:
+    #   - "1883:1883"
+    restart: always
 #  gcloud-iot:
 #    build: docker/gcloud-iot
