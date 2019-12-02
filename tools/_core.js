@@ -11,7 +11,7 @@ const checkTOKEN = () => {
 
 const login = async () => {
     checkTOKEN();
-    return execa('./node_modules/.bin/balena', [
+    return execa('balena', [
         "login",
         "--token",
         process.env.BALENA_TOKEN
@@ -20,7 +20,7 @@ const login = async () => {
 
 const execute = async (execArgs, pipeOut = true) => {
     await login();
-    const buildProc = execa('./node_modules/.bin/balena', execArgs);
+    const buildProc = execa('balena', execArgs);
 
     if (pipeOut) {
         buildProc.stdout.pipe(process.stdout);

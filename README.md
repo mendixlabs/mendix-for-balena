@@ -53,14 +53,52 @@ Your repository should have the following (partial) structure (**_leave all othe
 
 It is possible, using the Balena Cli, to build the Docker images locally. This will fix problems with the build server ARM1, which sometimes fails. Images are stored in your local Docker repo (on your computer). We're also checking if it will be possible to put this image on Docker Hub to make development easier.
 
-### Build
+### Automatic
+
+1. Make sure Docker is running on your computer. You can download this for Mac/Linux/[Windows](https://docs.docker.com/docker-for-windows/)
+2. Make sure you have Node 10.x (LTS) installed. (Tip, for Windows, use [NVM](https://github.com/coreybutler/nvm-windows))
+3. Make sure you have installed the Balena cli, this can be done using NodeJS `npm install balena-cli -g` or download the installer [here](https://github.com/balena-io/balena-cli/releases/latest). The installer is necessary when you use this setup on Windows, on Mac you can use the NodeJS command
+4. Copy the '.env.example' file to '.env' en fill in the correct values. You will need a Balena token (for authentication when deploying)
+5. Run the following command (in a terminal) **ONCE** to install dependencies: `npm install`
+6. Run `npm run project` to copy the most recent release from your Mendix project in this setup
+7. Run `npm run build` to build the Docker image
+8. Run `npm run deploy` to deploy this to your device
+
+#### Environment variables
+
+The automated tools will make use of a few environment variables. These can be set in your CI/CD pipeline, in your command when executing your npm tasks, or by the use of an `.env` file. The file contains the following (replace this with your values):
+
+```text
+BALENA_REPO="<userName>/<Balena App Name>"
+BALENA_TOKEN="<token coming from Balena, used to login>"
+BALENA_DEVICE="raspberrypi4-64"
+BALENA_ARCH="aarch64"
+BALENA_MENDIX_PROJECT="<Location of the root folder of your Mendix app>"
+```
+
+Explanation:
+
+- **BALENA_REPO**
+    - You can find this in your Balena app screen. On the top right it says `git remote add balena jwlagendijk@git.balena-cloud.com:jwlagendijk/balena-mendix-iot.git`. Derived from this, the repo in my case would be `jwlagendijk/balena-mendix-iot``
+- **BALENA_TOKEN**
+    - In order to push to your Balena app, you need to be authorized. This is done using a token, the documentation can be found [here](https://www.balena.io/docs/learn/manage/account/#access-tokens)
+- **BALENA_DEVICE**
+    - This has to do with the type of device you are building for. In my example I am building for a `Raspberry Pi 4 - 64Bit` device. The list of machines can be found [here](https://www.balena.io/docs/reference/base-images/devicetypes/)
+- **BALENA_ARCH**
+    - This is the architecture. [Same list as previous](https://www.balena.io/docs/reference/base-images/devicetypes/)
+- **BALENA_MENDIX_PROJECT**
+    - This will tell the `project` task where to find the Mendix project. Make sure you point to the **root** folder of your project. This folder should contain a folder called 'releases' with MDA files in it. If you are using a CI/CD pipeline, please make sure you use that same structure.
+
+### Manual
+
+#### Build
 
 1. Make sure Docker is running on your computer
 2. Make sure Balena Cli is installed on your computer and you are logged in.
 3. Run the following command: `balena build --deviceType raspberrypi3 --arch armv7hf --emulated --verbose --logs`
 4. This will build all the images and store them in your local Docker
 
-### Deploy
+#### Deploy
 
 1. Make sure the build in the previous step is succesful
 2. Deploy to Balena with the following command: `balena deploy <username>/<app-name>`
