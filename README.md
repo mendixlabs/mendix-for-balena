@@ -58,7 +58,7 @@ It is possible, using the Balena Cli, to build the Docker images locally. This w
 1. Make sure Docker is running on your computer. You can download this for Mac/Linux/[Windows](https://docs.docker.com/docker-for-windows/)
 2. Make sure you have Node 10.x (LTS) installed. (Tip, for Windows, use [NVM](https://github.com/coreybutler/nvm-windows))
 3. Make sure you have installed the Balena cli, this can be done using NodeJS `npm install balena-cli -g` or download the installer [here](https://github.com/balena-io/balena-cli/releases/latest). The installer is necessary when you use this setup on Windows, on Mac you can use the NodeJS command
-4. Copy the '.env.example' file to '.env' en fill in the correct values. You will need a Balena token (for authentication when deploying)
+4. Copy the `.env.example` file to `.env` en fill in the correct values. You will need a Balena token (for authentication when deploying)
 5. Run the following command (in a terminal) **ONCE** to install dependencies: `npm install`
 6. Run `npm run project` to copy the most recent release from your Mendix project in this setup
 7. Run `npm run build` to build the Docker image
