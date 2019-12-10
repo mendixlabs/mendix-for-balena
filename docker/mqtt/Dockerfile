@@ -1,4 +1,4 @@
-FROM panuwitp/mosquitto-arm
+FROM jllopis/mosquitto
 
 # The following container is using the standard Mosquitto service. We include the config if you need to make changes
 

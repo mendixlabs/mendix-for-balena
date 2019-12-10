@@ -1,4 +1,4 @@
-FROM tobi312/rpi-nginx:alpine
+FROM amd64/nginx
 
 USER root
 

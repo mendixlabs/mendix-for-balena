@@ -26,7 +26,7 @@ services:
       - "443:443"
     restart: always
   db:
-    image: arm32v7/postgres
+    image: amd64/postgres
     restart: always
     environment:
       - PGDATA=/database
