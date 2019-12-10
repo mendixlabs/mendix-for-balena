@@ -26,7 +26,7 @@ services:
       - "443:443"
     restart: always
   db:
-    build: docker/postgres
+    image: arm32v7/postgres
     restart: always
     environment:
       - PGDATA=/database
